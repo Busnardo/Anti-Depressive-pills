@@ -1,0 +1,40 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, Image, Button } from 'react-native';
+
+const EditablePage = () => {
+  const [title, setTitle] = useState('');
+  const [text, setText] = useState('');
+  const [image, setImage] = useState('');
+
+  const handleTitleChange = (value) => setTitle(value);
+  const handleTextChange = (value) => setText(value);
+  const handleImageChange = (value) => setImage(value);
+
+  const handleSave = () => {
+    // save data
+  }
+
+  return (
+    <View>
+      <TextInput
+        placeholder="Title"
+        value={title}
+        onChangeText={handleTitleChange}
+      />
+      <TextInput
+        placeholder="Text"
+        value={text}
+        onChangeText={handleTextChange}
+      />
+      <TextInput
+        placeholder="Image URL"
+        value={image}
+        onChangeText={handleImageChange}
+      />
+      {image ? <Image source={{ uri: image }} /> : null}
+      <Button title="Save" onPress={handleSave} />
+    </View>
+  );
+};
+
+export default EditablePage;
